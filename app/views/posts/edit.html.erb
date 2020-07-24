@@ -1,11 +1,15 @@
 <h3>Post Form</h3>
 
-<%= form_tag post_path(@post), method: "put" do %>
+<%= form_for (@post) do |f| %>
+<!--#f is an iterator for the new form object to dynamically assign form field elements + autofills values-->
+
   <label>Post title:</label><br>
-  <%= text_field_tag :title, @post.title %><br>
+  <%= f.text_field :title %><br>
 
   <label>Post Description</label><br>
-  <%= text_area_tag :description, @post.description %><br>
+  <%= f.text_area :description %><br>
   
-  <%= submit_tag "Submit Post" %>
+  <%= f.submit %>
 <% end %>
+
+<!--We no longer have to pass in the values manually.  By passing in the attribute as a symbol :title, it tells the form what model attribute to be associated with + autofills the values for us -->
